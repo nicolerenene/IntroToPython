@@ -238,4 +238,4 @@ dist
 .yarn/build-state.yml
 .pnp.*
 
-.xcf
+*.xcf
