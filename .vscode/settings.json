@@ -11,6 +11,7 @@
         "MD013": false,
         "MD025": false,
         "MD034": false,
+        "MD035": false,
         "MD041": false
     },
     "markdown.extension.tableFormatter.normalizeIndentation": true,
