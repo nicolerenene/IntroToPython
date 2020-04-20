@@ -36,7 +36,7 @@ On the "Select Destination Location" screen:
 On the "Select Start Menu Folder" screen:
 
 1. Leave the default folder selection unchanged.
-2. Click "Next >". 
+2. Click "Next >".
 
 ![VS Code start menu folder selection](assets/img/vs_code_04_start_menu.png)
 
