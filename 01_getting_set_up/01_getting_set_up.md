@@ -109,6 +109,15 @@ Make a PB&J sandwich
 ## Error Messages
 
 1. When things go wrong, Tom doesn't communicate very clearly.
+
+    ```python
+    print(Hello, world!)
+    #  File "<stdin>", line 1
+    #    print(Hello, world!)
+    #                      ^
+    #  SyntaxError: invalid syntax
+    ```
+
 2. Error messages are your friend.
 3. Google, Google, Google.
 
@@ -120,9 +129,19 @@ Make a PB&J sandwich
 
 ## What is Python?
 
+1. A user-friendly, general-purpose programming language
+   * User-friendly: Much easier to use than most other popular languages
+   * General-purpose: Can be used to write all sorts of programs
+2. An interpreter that translates Python code into CPU instructions
+
 ---
 
 ## What is Python used for?
+
+* Web development
+* Systems administration
+* Data science and big data
+* Machine learning/AI
 
 ---
 
@@ -130,6 +149,63 @@ Make a PB&J sandwich
 
 * *REPL*: *R*ead-*E*valuate-*P*rint *L*oop
 * Launching the Python REPL
+* Exiting the Python REPL
+
+---
+
+# Comments
+
+---
+
+## About Comments
+
+* A way to leave notes to yourself in your code
+* Code that Python will ignore
+
+---
+
+## Single-Line Comments
+
+* Start with a pound sign/hashtag
+* End when the line ends
+
+    ```python
+    # This is a single-line comment.
+    'Hello, world!'
+    ```
+
+* Can start anywhere within a line
+
+    ```python
+    'Hello, world!'  # Also a comment.
+    ```
+
+---
+
+## Multi-Line Comments
+
+* Start and end with three sets of quotation marks
+
+    ```python
+    """
+    Here's a multi-line comment.
+    It goes for as many lines
+    as you want.
+    """
+    ```
+
+---
+
+## Commenting Things Out
+
+* Super helpful during debugging
+* Lets you remove code without deleting it
+
+    ```python
+    'This code will execute.'
+
+    # 'This code will not execute.'
+    ```
 
 ---
 
@@ -139,8 +215,8 @@ Make a PB&J sandwich
 
 ## About Strings
 
-* *Strings*: groups of characters all lumped together
-* *Characters*: letters, numbers, and symbols
+* *String*: A groups of characters all lumped together
+* *Character*: A single letter, number, or symbol
 * Two types of strings:
   1. Single-line
   2. Multi-line
@@ -172,6 +248,7 @@ Make a PB&J sandwich
 
     ```python
     "Python's great!"
+
     'They said, "Python is great!"'
     ```
 
@@ -179,18 +256,9 @@ Make a PB&J sandwich
 
     ```python
     'They said, "Python\'s great!"'
+
     'Don\'t need to mix quotes this way.'
     ```
-
----
-
-## Single-Line String Exercises
-
-1. Wrap in single quotes <!-- .element: class="fragment" data-fragment-index="1" -->
-2. Wrap in double quotes <!-- .element: class="fragment" data-fragment-index="2" -->
-3. Mixed usage--when it's a bug (different leading and trailing quotes) <!-- .element: class="fragment" data-fragment-index="3" -->
-4. Mixed usage--when it's a feature (using quotes inside of a string) <!-- .element: class="fragment" data-fragment-index="4" -->
-5. Mixed usage--escaping quotes inside a string <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ---
 
@@ -199,37 +267,51 @@ Make a PB&J sandwich
 * Wrap in three sets of single quotes or three sets of double quotes
 * Idiomatic style: double quotes
 
-```python
-# Most common:
-"""This is a
-multi-line string"""
+    ```python
+    # Most common:
+    """This is a
+    multi-line string"""
 
-# Also works:
-'''This is a
-multi-line string'''
+    # Also works:
+    '''This is a
+    multi-line string'''
+    ```
+
+---
+
+---
+
+## Concatenation
+
+* A fancy Latin way of saying "chaining together"
+* Two main ways to concatenate strings:
+  1. Addition
+  2. Repetition
+
+```python
+'Concatenation ' + 'by ' + 'addition'
+# >>> 'Concatenation by addition'
+
+'Repetition' * 3
+# >>> 'RepetitionRepetitionRepetition'
 ```
 
 ---
 
-## Multi-Line String Exercises
-
-1. Wrap in single quotes <!-- .element: class="fragment" data-fragment-index="1" -->
-2. Wrap in double quotes <!-- .element: class="fragment" data-fragment-index="2" -->
-3. Mixed usage--when it's a bug (diff leading and trailing quotes) <!-- .element: class="fragment" data-fragment-index="3" -->
-4. Mixed usage--when it's a feature (using quotes inside of a string) <!-- .element: class="fragment" data-fragment-index="4" -->
+# Variables
 
 ---
 
-## Variables
+## About Variables
 
-* *Variables*: basically, putting nametags on things
-* Create a variable with an *assignment expression*:
+* *Variable*: Basically, putting a nametag on something in Python
+* Create a variable with an *assignment expression*.
 
     ```python
     my_variable = 'A string'
     ```
 
-* *Reference* a variable by using its name:
+* *Reference* a variable by using its name.
 
     ```python
     my_variable
@@ -241,8 +323,8 @@ multi-line string'''
 ## Anatomy of an Assignment Expression
 
 ```python
-  my_variable  =  'A string'
-# |---1---| |2| |---3---|
+  my_variable = 'A string'
+# |----1----| 2 |---3----|
 ```
 
 1. Name
@@ -268,8 +350,8 @@ multi-line string'''
     1st_variable = 'spqr'  # SyntaxError
     ```
 
+* Can't be a keyword (see next slide)
 * Idiomatic style: `snake_case`
-* Can't be a keyword
 
 ---
 
@@ -293,23 +375,35 @@ async     elif        if         or          yield
 
 ---
 
-## Functions
+# Functions
 
-* *Function*: a bunch of code grouped under one nametag
-* Look like variables but with parentheses at the end:
+---
+
+## About Functions
+
+* *Function*
+  1. A bunch of code,
+  2. Which takes data and does something with it,
+  3. Grouped under one nametag.
+
+---
+
+## About Functions, cont.
+
+* They look like variables but with parentheses at the end.
 
     ```python
     my_function()
     ```
 
-* Many take *arguments*: values or variables *passed in* between the parentheses
+* Many take *arguments*: values or variables *passed in* between the parentheses.
 
     ```python
     my_function('argument')
     my_function(foo)
     ```
 
-* They *return* values, which can be assigned to a variable
+* They *return* values, which can be assigned to a variable.
 
     ```python
     foo = my_function('bar')
@@ -331,10 +425,13 @@ async     elif        if         or          yield
 
 ---
 
-## `print()`
+# `print()`
+
+---
+
+## About `print()`
 
 * Doesn't have anything to do with printers (anymore, at least)
-* What it does: takes arguments and shows them on the screen
 * Name is a relic of the past, like using a picture of a floppy disk for the "save" icon
 
 ---
@@ -349,19 +446,23 @@ Save icon
 
 ---
 
-## `print()` Exercise
+## About `print()`, cont.
 
-Print 'Hello, world!' in the REPL
+* What it does: takes argument(s) and shows them on the screen
+
+```python
+print('Hello, world!')  # Single argument
+
+print('Hello,', 'world!') # Multiple arguments
+```
 
 ---
 
-## Question
-
-Why don't we need to use `print()` in the REPL?
+# Your First Program
 
 ---
 
-## Your First Program
+## `hello_world.py`
 
 1. Open `hello_world.py` in VS Code.  
    (".py" is the file extension for Python files.)
@@ -413,3 +514,69 @@ What happens if we do this?
     ```
 
 2. Save and run the program.
+
+---
+
+# `input()`
+
+---
+
+## About `input()`
+
+* Actually does what its name says
+  1. Pauses program execution
+  2. Prompts the user to type something
+  3. When the user hits Enter, returns what they typed
+  4. Resumes program
+
+---
+
+## Using `input()`
+
+```python
+user_name = input('Type your name, then press Enter: ')
+#---2---|         |----------------1-----------------|
+
+print('Hello,', user_name + '!')
+#               |---3---|
+```
+
+1. User prompt
+2. Assign user input to a variable
+3. Print user input
+
+---
+
+## `hello_name.py`
+
+1. Open `hello_name.py` in VS Code.  
+   (".py" is the file extension for Python files.)
+2. In `hello_name.py`, replace
+
+    ```python
+    # Your code here...
+    ```
+
+    with
+
+    ```python
+    user_name = input('Type your name, then press Enter: ')
+    print('Hello,', user_name + '!')
+    ```
+
+    and save the file.
+
+---
+
+## Run `hello_name.py`
+
+1. Open the terminal in VS Code.
+2. In the terminal, type
+
+    ```bash
+    python hello_name.py
+    ```
+
+    and hit Enter.
+
+3. Interact with the program.
