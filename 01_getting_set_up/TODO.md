@@ -1,3 +1,2 @@
-- [ ] New images for VS Code configuration (post clone in GH Desktop)
-- [ ] Complete 05_install_anaconda.md
-- [ ] Add images for launching Python REPL
+- [x] New images for VS Code configuration (post clone in GH Desktop)
+- [x] Complete 05_install_anaconda.md
