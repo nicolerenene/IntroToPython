@@ -238,4 +238,8 @@ dist
 .yarn/build-state.yml
 .pnp.*
 
+# GIMP files
 *.xcf
+
+# Allow all files when they're part of a presentation
+!**/presentation/**/*
