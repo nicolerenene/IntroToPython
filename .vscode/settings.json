@@ -1,0 +1,21 @@
+{
+    "atomKeymap.promptV3Features": true,
+    "autoDocstring.docstringFormat": "numpy",
+    "autoDocstring.startOnNewLine": true,
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.formatOnPaste": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "markdownlint.config": {
+        "MD013": false,
+        "MD025": false,
+        "MD026": false,
+        "MD034": false,
+        "MD035": false,
+        "MD041": false
+    },
+    "markdown.extension.tableFormatter.normalizeIndentation": true,
+    "markdown.extension.toc.githubCompatibility": true,
+    "markdown.extension.toc.unorderedList.marker": "*"
+}
