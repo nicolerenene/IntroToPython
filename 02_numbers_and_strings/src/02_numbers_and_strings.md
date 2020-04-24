@@ -199,7 +199,7 @@ len('Python is the greatest.')
 
 ## Exercise: Modify hello_name.py
 
-* Use `upper()` method and `len()` function to print out name in caps and state the name length
+* Use `upper()` and `strip()` methods and `len()` function to print out name in caps and state the name length
 * E.g. “Hello JAKE, your name is 4 letters long”
 
 ---
@@ -212,7 +212,7 @@ len('Python is the greatest.')
 
 * In math, we use commas as thousands separators.
 
-    $$x = 1,234,567,890$$
+  $$x = 1,234,567,890$$
 
 * When programming, we can't do that.
 * Python sees comma-separated values as something totally different.
