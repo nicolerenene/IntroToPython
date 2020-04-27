@@ -92,15 +92,15 @@ parser.add_argument('remainder', nargs='?')
 
 if __name__ == '__main__':
     args = parser.parse_args(sys.argv)
-    print(args)
 
     if args.mode == 'create':
-        if not ('project_name' in args and 'parent_folder' in args):
-            parser.error('When mode=create, must specify project-name and parent-folder.')
+        if args.project_name is None or args.parent_folder is None:
+            parser.error('When mode=create, must specify --project-name and --parent-folder.')
         create_project(project_name=args.project_name, parent_dir=args.parent_folder)
     elif args.mode == 'build':
-        if not ('input_path' in args and 'output_path' in args):
-            parser.error('When mode=build, must specify input-path and output-path.')
+        if args.input_path is None or args.output_path is None:
+            parser.error('When mode=build, must specify --input-path and --output-path.')
         build_html(in_path=args.input_path, out_path=args.output_path)
     else:
-        raise NotImplementedError(f'Command-line options have not been created for mode {args.mode} yet.')
+        parser.print_usage()
+        parser.exit()
