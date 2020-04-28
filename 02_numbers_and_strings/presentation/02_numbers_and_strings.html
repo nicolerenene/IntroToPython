@@ -1,20 +1,27 @@
----
-author: Cory Taylor
-title: Numbers and Strings
-date: April 17, 2020
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Numbers and Strings</title>
+    <link rel="stylesheet" href="./css/reveal.css" />
+    <link rel="stylesheet" href="./css/theme/moon.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/vs2015.css" />
+    <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
 
 # Numbers and Strings
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Goals of the Lesson
 
 1. Update `hello_name.py` to capitalize the user's name and say how long it is
 2. Write a number-guessing game
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Lesson Overview
 
 1. Types
@@ -33,13 +40,9 @@ date: April 17, 2020
    1. `if`
    2. `if...else`
    3. `if...elif...else`
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 # Types
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## About Types
 
 * *Type*: The blueprint that shows what an object is like and how it will act
@@ -50,9 +53,7 @@ date: April 17, 2020
   * `int` (integers/whole numbers)
   * `float` (decimal numbers)
   * `bool` (Booleans: `True` and `False`)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `type()`
 
 The `type()` function lets you plug in an object and see what class it is.
@@ -70,9 +71,7 @@ type(2.0)
 type(True)
 # <class 'bool'>
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 # Methods
 
 * *Method*: A function built into a type blueprint
@@ -82,9 +81,7 @@ type(True)
     ```python
     some_object.method_name()
     ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## String Methods
 
 Useful string methods:
@@ -94,9 +91,7 @@ Useful string methods:
 * `strip()`
 * `replace()`
 * `split()`
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `upper()`
 
 * Converts a string to uppercase
@@ -106,9 +101,7 @@ Useful string methods:
 'Hello, world!'.upper()
 # 'HELLO, WORLD!'
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `lower()`
 
 * Converts a string to lowercase
@@ -118,9 +111,7 @@ Useful string methods:
 'Hello, world!'.lower()
 # 'hello, world!'
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `strip()`
 
 * Removes whitespace (spaces, tabs, line breaks) from the beginning and end of a string
@@ -139,9 +130,7 @@ Useful string methods:
 """.strip()
 # 'Hello, world!'
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `replace()`
 
 * Takes two arguments:
@@ -161,9 +150,7 @@ Useful string methods:
 'Hello, world!'.replace(', world', ' there')
 # 'Hello there!'
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `split()`
 
 * Breaks a string up into a list of *substrings* based on a separator
@@ -177,9 +164,7 @@ Useful string methods:
 'A B C'.split()
 # ['A', 'B', 'C']
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `len()`
 
 * A function, not a method
@@ -194,20 +179,14 @@ len('Hello, world!')
 len('Python is the greatest.')
 # 23
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Exercise: Modify hello_name.py
 
 * Use `upper()` and `strip()` methods and `len()` function to print out name in caps and state the name length
 * E.g. “Hello JAKE, your name is 4 letters long”
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 # Numbers
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Notes on Notation (1)
 
 * In math, we use commas as thousands separators.
@@ -222,9 +201,7 @@ x = 1,234,567,890
 print(x)
 # (1, 234, 567, 890)
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Notes on Notation (2)
 
 * Two ways around the problem of separators
@@ -243,9 +220,7 @@ print(x)
       print(x)
       # 1234567890
       ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `int`
 
 * *Integer*: A whole number (no decimals)
@@ -266,9 +241,7 @@ z = 0
 print(type(z))
 # <class 'int'>
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Floats
 
 * *Floating-point number*: A number with a decimal point (even if all decimal places are 0)
@@ -290,9 +263,7 @@ z = 0.0
 print(type(z))
 # <class 'float'>
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Notes on Notation (3)
 
 * When all decimal places are 0, you don't have to write them.
@@ -310,9 +281,7 @@ z = -899348.
 print(type(z))
 # <class 'float'>
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Notes on Notation (4)
 
 * Scientific notation (calculator-style) works
@@ -327,36 +296,26 @@ y = 4893e-4
 print(y)        # 0.4893
 print(type(y))  # <class 'float'>
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 # Booleans
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 George Boole (1815--1864)
 
 ![George Boole c. 1860](assets/img/george_boole.jpg)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## About Booleans
 
 * *Boolean*: A truth value
 * Python type: `bool`
 * Only two values: `True` and `False` (notice the capital letters!)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Truth Testing
 
 * Booleans are the result of truth tests
 * Equality and inequality
 * Identity
 * Logical operators
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Equality and Inequality
 
 | Python | Math   | Meaning                  |
@@ -367,9 +326,7 @@ George Boole (1815--1864)
 | `<`    | $\lt$  | less than                |
 | `>=`   | $\geq$ | greater than or equal to |
 | `<=`   | $\leq$ | less than or equal to    |
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Equality and Inequality, cont.
 
 * Most obvious use: comparing numbers
@@ -388,9 +345,7 @@ George Boole (1815--1864)
 'a' < 'b'   # True
 'Z' < 'a'   # True
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Identity
 
 * Identity operator: `is`
@@ -399,9 +354,7 @@ George Boole (1815--1864)
   * `is True`
   * `is False`
   * `is None`
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Logical Operators
 
 * Compare the truth values of two objects
@@ -409,9 +362,7 @@ George Boole (1815--1864)
   * `and`
   * `or`
   * `not`
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `and`
 
 * If (and only if) both values are `True`, returns `True`
@@ -424,9 +375,7 @@ True and False   # False
 False and True   # False
 False and False  # False
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `or`
 
 * If at least one value is `True`, returns `True`
@@ -439,9 +388,7 @@ False or True  # True
 
 False or False  # False
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `not`
 
 * If a value is `True`, returns `False`
@@ -452,13 +399,9 @@ not False  # True
 
 not True   # False
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ![Screenshot from Colbert Report showing first use of the word "truthiness"](assets/img/truthiness.png)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Truthiness
 
 * *Truthiness*: The truth value of an object
@@ -475,13 +418,9 @@ bool(None)   # False
 bool(0)      # False
 bool('')     # False
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 # Conditional Logic
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## About Conditionals
 
 * Change program flow based on results of truth tests
@@ -490,9 +429,7 @@ bool('')     # False
   1. `if`
   2. `if...else`
   3. `if...elif...else`
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Notes on Notation (5)
 
 * In Python, blocks are denoted by indentation
@@ -504,9 +441,7 @@ if condition_1:      # Level 1
     if condition_2:  # Level 2
         result       # Level 3
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `if`
 
 * Runs code inside its block if the condition evaluates to `True`
@@ -523,9 +458,7 @@ x = 5
 if x == 5:
     print('x equals 5')
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `if...else`
 
 * Code inside `else` block runs if the condition evaluates to `False`
@@ -539,9 +472,7 @@ if x == 5:
 else:
     print('x does not equal 5')
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## `if...elif...else`
 
 * Lets you stack multiple `if...else` blocks without having to keep indenting
@@ -557,11 +488,60 @@ elif x < 5:
 else:
     print('x equals 5')
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Exercise: Number Guessing Game
 
 * User inputs a number to have one guess at the correct number
 * Number is not random: student decides static pre-determined number in the code
 * Output should tell them if number is lower, higher, or correct
+</script></section></div>
+    </div>
+
+    <script src="./js/reveal.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // Optional libraries used to extend on reveal.js
+      var deps = [
+        { src: './plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+        { src: './plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+        { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: './plugin/zoom-js/zoom.js', async: true },
+        { src: './plugin/notes/notes.js', async: true },
+        { src: './plugin/math/math.js', async: true }
+      ];
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        dependencies: deps
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal.getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"controlsTutorial":false,"center":true,"transition":"none","width":"100%","height":"100%","printSize":"letter"}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>
