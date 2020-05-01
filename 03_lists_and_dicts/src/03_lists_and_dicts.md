@@ -154,17 +154,18 @@ my_list[-5]  # IndexError: list index out of range
 * Uses subscript notation with start and stop indexes separated by a colon: `coll[start:stop]`
   * Starts *at* the start index
   * Stops *before* the stop index
+  * In math: $[\text{start}, \text{stop})$
 * Works with positive and negative indexes
-* Shorthand: empty start/stop indices mean "from the start"/"through the end"
+* Shorthand: empty start/stop indices
 
 ```python
 my_list = ['a', 'b', 'c', 'd']
 
-my_list[0:2]   # ['a', 'b']
-my_list[:2]    # ['a', 'b']
-my_list[-3:-1] # ['b', 'c']
-my_list[1:]    # ['b', 'c', 'd']
-my_list[:-1]   # ['a', 'b', 'c']
+my_list[0:2]    # ['a', 'b']
+my_list[:2]     # ['a', 'b']
+my_list[-3:-1]  # ['b', 'c']
+my_list[1:]     # ['b', 'c', 'd']
+my_list[:-1]    # ['a', 'b', 'c']
 ```
 
 ---
