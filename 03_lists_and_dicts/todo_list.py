@@ -80,8 +80,12 @@ def safe_number_input(prompt: str) -> Optional[int]:
         an integer, returns None.
     """
     _choice: Optional[int] = None
+
+    _choice_raw = input(prompt)
+    _choice_clean = _choice_raw.strip()
+    
     try:
-        _choice = int(input(prompt).strip())
+        _choice = int(_choice_clean)
     except ValueError:
         print('ERROR: Must choose an integer.')
 

@@ -12,6 +12,8 @@ guess_clean = guess.strip()
 # Casting to int would throw an error in that case.
 guess_num = float(guess_clean)
 
+# guess = float(input('...').strip())
+
 # Even though our hidden number is an int, we can compare it to the
 # guess because Python automatically converts ints to floats before
 # comparing them.

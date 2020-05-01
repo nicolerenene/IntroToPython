@@ -1,110 +1,95 @@
 ---
 author: Cory Taylor
-title: Lists and Dictionaries
+title: Collections and Loops
 date: April 27, 2020
 ---
 
-# Lists and Dictionaries
+# Collections and Loops
 
 ---
 
-## Goal of the Lesson
+## Goals of the Lesson
 
-Write a program that keeps track of a to-do list
+Gain a solid understanding of (1) collection types, (2) loop constructs, and (3) error handling
 
 ---
 
 ## Lesson Overview
 
-1. Error handling
-2. Lists: overview
+1. Collections overview, mutability, ordering
+2. Strings as collections
 3. Indexing and slicing
-4. List operations
-5. List methods
-6. Dictionaries: overview
-7. Dictionary operations
-8. Dictionary methods
-9. Loops, `enumerate()`
+4. Membership testing
+5. Tuples
+6. Lists
+7. Dicts
+8. Loops (`while`, `for`)
+9. Handling errors
 
 ---
 
-# Handling Errors and Exceptions
+# Collections
 
 ---
 
-## `try/except...`
+## About Collections
 
-* Python tries to run the code in the `try` block.
-* If a given error is thrown, the code in the `except` block runs.
-
-```python
-try:
-    num = input('Enter a number: ')
-    float(num)
-except ValueError:
-    print('Must type a number.')
-
-# Enter a number: hello
-# Must type a number.
-```
+* AKA *data structures*
+* A container for one or more *items*/*elements* of data
+* Examples:
+  * `str`
+  * `tuple`
+  * `list`
+  * `dict`
 
 ---
 
-## `try/except/finally`
+## Mutability
 
-* Like a normal `try...except...`
-* `finally` block runs whether `try` or `except` runs successfully
-* Use case: making sure files get closed even if there's an error reading them
-
-```python
-try:
-    num = input('Enter a number: ')
-    float(num)
-except ValueError:
-    print('Must type a number.')
-finally:
-    print('I print regardless.')
-
-# Enter a number: 10
-# I print regardless.
-```
+* Attribute of every Python type (not just collections!)
+* *Immutable*: Results of an operation must be assigned to a variable
+* *Mutable*: Can change the data without creating a new variable (updating in place)
+* `str`, `int`, `float`, `tuple` are all immutable
+* `list` and `dict` are mutable
 
 ---
 
-# Lists
+## Ordering
+
+* Attribute of collection types
+* *Ordered* collections: Elements stored in a particular order
+* *Unordered* collections: Elements stored in no particular order
+* `str`, `tuple`, `list` are ordered
+* `dict` is unordered
 
 ---
 
-## About Lists
-
-* Type: `list`
-* Denoted by square brackets (`[` and `]`)
-* Values are mutable and ordered
-* Can contain objects of any type
-* Can mix and match types within a list
-
-```python
-empty_lst = []
-int_list = [1, 2, 3]
-str_list = ['a', 'b', 'c']
-any_list = [1, 'b', None, [2, 'b']]
-```
+# Strings
 
 ---
 
-## `list()`
+## Strings as Collections
 
-Converts other collections into lists
+* Can only contain letters, numbers, and symbols
+  
+    ```python
+    type(None)  # <class 'NoneType'>
+    str(None)  # 'None'
+    ```
 
-```python
-my_str = 'abcd'
-list(my_str)
-# ['a', 'b', 'c', 'd']
+* Immutable: results of string operations must be assigned to a variable
 
-my_tuple = (1, 'a', None,)
-list(my_tuple)
-# [1, 'a', None]
-```
+    ```python
+    foo = 'bar'
+    foo.upper()  # 'BAR'
+    print(foo)   # 'bar'
+    ```
+
+* Ordered: position of characters matters
+
+    ```python
+    'abcd' == 'dcba'  # False
+    ```
 
 ---
 
@@ -114,19 +99,18 @@ list(my_tuple)
 
 ## Indexing
 
-* *Indexed* collections: elements can be accessed by number
+* How to access elements in ordered collections
 * Indexes start at `0`
   * First item at `0`, second at `1`, last at `len(coll) - 1`
 * Access an element using *subscript notation*
-* Throws an `IndexError` if the subscript is larger than `len(coll) - 1`
 
 ```python
-my_list = ['a', 'b', 'c', 'd']
+foo = 'abcd'
 
-my_list[1]    # 'b'
-
-len(my_list)  # 4
-my_list[4]    # IndexError: list index out of range
+foo[0]  # 'a'
+foo[1]  # 'b'
+foo[2]  # 'c'
+foo[3]  # 'd'
 ```
 
 ---
@@ -136,14 +120,14 @@ my_list[4]    # IndexError: list index out of range
 * Lets you access elements of a collection in reverse order
 * Negative indexes start at `-1`
   * Last item at `-1`, second-to-last at `-2`, first at `-len(coll)`
-* Throws an `IndexError` if the subscript is smaller than `-len(coll)`
 
 ```python
-my_list = ['a', 'b', 'c', 'd']
+foo = 'abcd'
 
-my_list[-1]  # 'd'
-my_list[-4]  # 'a'
-my_list[-5]  # IndexError: list index out of range
+foo[-1]  # 'd'
+foo[-2]  # 'c'
+foo[-3]  # 'b'
+foo[-4]  # 'a'
 ```
 
 ---
@@ -159,13 +143,130 @@ my_list[-5]  # IndexError: list index out of range
 * Shorthand: empty start/stop indices
 
 ```python
-my_list = ['a', 'b', 'c', 'd']
+foo = 'abcd'
 
-my_list[0:2]    # ['a', 'b']
-my_list[:2]     # ['a', 'b']
-my_list[-3:-1]  # ['b', 'c']
-my_list[1:]     # ['b', 'c', 'd']
-my_list[:-1]    # ['a', 'b', 'c']
+foo[0:2]    # 'ab'
+foo[:2]     # 'ab'
+foo[-3:-1]  # 'bc'
+foo[1:]     # 'bcd'
+foo[:-1]    # 'abc'
+```
+
+---
+
+# Membership
+
+---
+
+## Testing for Membership
+
+* Use the `in` operator to test whether an item is present in a collection
+
+```python
+foo = 'abcd'
+'a' in foo  # True
+'z' in foo  # False
+```
+
+---
+
+# Tuples
+
+---
+
+## About Tuples
+
+* Denoted by parentheses: `(` and `)`
+
+    ```python
+    empty_tuple = ()
+    ```
+
+* Immutable: Results of tuple operations must be assigned to a variable
+* Ordered: Can access elements by index; position of elements matters
+
+    ```python
+    foo = ('a', 'b', 'c',)
+    bar = ('c', 'b', 'a',)
+
+    foo[0]   # 'a'
+    foo[:2]  # ('a', 'b')
+
+    foo == bar  # False
+    ```
+
+* Can contain objects of any type; membership is testable
+
+    ```python
+    baz = (1, 'b', None,)
+    1 in baz
+    # True
+    ```
+
+---
+
+## Tuple Unpacking
+
+* Elements of a tuple can be assigned to different variables in a signle assignment statement
+* Number of variables must match number of tuple elements
+
+```python
+tpl = ('a', 'b',)
+foo, bar = tpl
+
+print(foo)  # 'a'
+print(bar)  # 'b'
+```
+
+---
+
+# Lists
+
+---
+
+## About Lists
+
+* Denoted by square brackets: `[` and `]`
+
+    ```python
+    empty_list = []
+    ```
+
+* Mutable: Many list operations don't require a new variable (see "List Methods" section)
+* Ordered: Can access elements by index; position of elements matters
+
+    ```python
+    foo = ['a', 'b', 'c']
+    bar = ['c', 'b', 'a']
+
+    foo[0]   # 'a'
+    foo[:2]  # ['a', 'b']
+
+    foo == bar  # False
+    ```
+
+* Can contain objects of any type; membership is testable
+
+    ```python
+    baz = [1, 'b', None]
+    1 in baz
+    # True
+    ```
+
+---
+
+## `list()`
+
+Converts other collections into lists
+
+```python
+foo = 'abcd'
+list(foo)
+# ['a', 'b', 'c', 'd']
+
+bar = (1, 'a', None,)
+list(bar)
+# [1, 'a', None]
 ```
 
 ---
@@ -177,17 +278,13 @@ my_list[:-1]    # ['a', 'b', 'c']
 ## Updating Item Values
 
 * Use an assignment expression to change the value of a list item
-* Only works with items already in the list
 
 ```python
-my_list = ['a', 'b', 'c', 'd']
+foo = ['a', 'b', 'c', 'd']
 
-my_list[0] = 'z'
-my_list
+foo[0] = 'z'
+foo
 # ['z', 'b', 'c', 'd']
-
-my_list[4] = 'foo'
-# IndexError: list assignment index out of range
 ```
 
 ---
@@ -204,19 +301,6 @@ list_3 = list_1 + list_2
 
 list_3
 # ['a', 'b', 'c', 'foo', 'bar']
-```
-
----
-
-## List Membership
-
-* Use the `in` operator to see whether an item exists in a list
-
-```python
-my_list = ['a', 'b', 'c']
-
-'a' in my_list  # True
-'z' in my_list  # False
 ```
 
 ---
@@ -279,38 +363,56 @@ popped_val
 
 ---
 
-## List Documentation
-
-https://devdocs.io/python~3.7/library/stdtypes#list
-
-https://docs.python.org/3.7/library/stdtypes.html#common-sequence-operations
-
-https://docs.python.org/3.7/library/stdtypes.html#mutable-sequence-types
+# Dicts
 
 ---
 
-# Dictionaries
+## About Dicts (1)
 
----
-
-## About Dictionaries
-
-* Type: `dict`
-* Mutable, unordered collections of key-value (K-V) pairs
-* Denoted by braces (`{` and `}`)
+* Denoted by braces: `{` and `}`
 * Keys and values separated by colons
 * K-V pairs comma-separated
-* Keys must be immutable (strings, numbers, tuples); values can be anything
+* Keys must be immutable; values can be anything
 
 ```python
 empty_dict = {}
 
-my_dict = {
+spqr = {
     'a': 'foo',
     'b': 'bar',
     'c': 'baz'
 }
 ```
+
+---
+
+## About Dicts (2)
+
+* Mutable: Many dict operations don't require a new variable (see "Dict Methods" section)
+* Unordered: Access values by key
+
+    ```python
+    spqr = {
+        'a': 'foo',
+        'b': 'bar'
+    }
+
+    spqr['a']  # 'foo'
+    ```
+
+* Membership tests are different for keys, values, and K-V pairs
+
+    ```python
+    spqr = {
+        'a': 'foo',
+        'b': 'bar'
+    }
+
+    # All True:
+    'a' in spqr
+    'foo' in spqr.values()
+    ('a', 'foo') in spqr.items()
+    ```
 
 ---
 
@@ -323,14 +425,14 @@ my_dict = {
   * Keys are not wrapped in quotes
 
 ```python
-my_dict = dict(a='foo', b='bar', c='baz')
+spqr = dict(a='foo', b='bar', c='baz')
 comparison = {
     'a': 'foo',
     'b': 'bar',
     'c': 'baz'
 }
 
-my_dict == comparison
+spqr == comparison
 # True
 ```
 
@@ -406,14 +508,6 @@ colors['red']['rgb'][0]
 
 ---
 
-## Dict Membership
-
-* To test if an item is a \_\_\_\_\_ in a dict, use \_\_\_\_\_:
-  * key: `item in dict_name`.
-  * value: `item in dict_name.values()`
-
----
-
 # Dict Methods
 
 ---
@@ -427,13 +521,13 @@ colors['red']['rgb'][0]
 * Approach (2) lets you avoid a `KeyError`
 
 ```python
-my_dict = dict(a='foo', b='bar', c='baz')
+spqr = dict(a='foo', b='bar', c='baz')
 
-my_dict.get('a')  # 'foo'
-my_dict.get('z')  # KeyError: 'z'
+spqr.get('a')  # 'foo'
+spqr.get('z')  # KeyError: 'z'
 
-my_dict.get('a', None)  # 'foo'
-my_dict.get('z', None)  # None
+spqr.get('a', None)  # 'foo'
+spqr.get('z', None)  # None
 ```
 
 ---
@@ -447,6 +541,17 @@ my_dict.get('z', None)  # None
   2. `dict_name.pop(key, default)`
 * Approach (2) lets you avoid a `KeyError`
 
+```python
+spqr = dict(a='foo', b='bar', c='baz')
+popped = spqr.pop('c')
+
+spqr
+# {'a': 'foo', 'b': 'bar'}
+
+popped
+# 'baz'
+```
+
 ---
 
 ## `dict.copy()`
@@ -454,11 +559,19 @@ my_dict.get('z', None)  # None
 * Works just like `list.copy()`
 * Avoids hard-to-find bugs where two variables are changing the same dict
 
----
+```python
+foo = {'a': 1, 'b': 2}
+bar = foo
+bar['c'] = 3
+print(foo)
+# {'a': 1, 'b': 2, 'c': 3}
 
-## Dict Documentation
-
-https://devdocs.io/python~3.7/library/stdtypes#dict
+foo = {'a': 1, 'b': 2}
+bar = foo.copy()
+bar['c'] = 3
+print(foo)
+# {'a': 1, 'b': 2}
+```
 
 ---
 
@@ -478,10 +591,13 @@ https://devdocs.io/python~3.7/library/stdtypes#dict
 
 * Syntax: `while condition:`
 * Can create infinite loops
+* Example of infinite loop: the REPL
 
 ```python
 while True:
-    do_something()
+    code = input('>>> ')
+    result = eval(code)
+    print(result)
 ```
 
 ---
@@ -494,14 +610,15 @@ while True:
 
 ```python
 while True:
-    do_something()
+    code = input('>>> ')
 
-    if some_condition:
-        break  # Stops loop entirely
-    elif other_condition:
-        continue  # Skips to do_something()
+    if code == 'quit()':
+        break  # Stops REPL
+    elif code == 'ctrl-C':
+        continue  # Goes back to input('>>> ')
 
-    do_something_else()
+    result = eval(code)
+    print(result)
 ```
 
 ---
@@ -520,8 +637,8 @@ while True:
 ## How for Loops Work
 
 ```python
-# Print numbers 0 to 4 individually
-for i in range(5):
+foo = [0, 1, 2, 3, 4]
+for i in foo:
     print(i)
 
 # Unrolled equivalent
@@ -554,7 +671,7 @@ for letter in letters:
 
 * Accepts a collection
 * Generates a series of `(index, item)` tuples
-* Can use multiple assignment in `loop_var` position
+* Can use tuple unpacking in `loop_var` position
 
 ```python
 letters = ['a', 'b', 'c', 'd']
@@ -574,7 +691,6 @@ for val in enumerate(letters):
 ## Iterating Over Dicts: Keys
 
 * Syntax: `for loop_var in dict_name:`
-* Use case: modifying all the entries in a dict
 
 ```python
 colors = {
@@ -585,10 +701,7 @@ colors = {
 
 for c in colors:
     if 'hex' in colors[c]:
-        _hex_code = colors[c]['hex']
-        _hex_int = int(_hex_code, base=16)
-        _oct_code = oct(_hex_int)
-        colors[c]['oct'] = _oct_code
+        print('Hex code for ', c, 'is', colors[c]['hex'])
 ```
 
 ---
@@ -607,13 +720,48 @@ colors = {
 
 for c, codes in colors.items():
     if 'hex' in codes:
-        _hex_int = int(codes['hex'], base=16)
-        codes['oct'] = oct(_hex_int)
-        colors[c] = codes
+        print('Hex code for', c, 'is', codes['hex'])
 ```
 
 ---
 
-# Exercise
+# Handling Errors and Exceptions
 
-Write a to-do list program
+---
+
+## `try/except...`
+
+* Python tries to run the code in the `try` block.
+* If a given error is thrown, the code in the `except` block runs.
+
+```python
+try:
+    num = input('Enter a number: ')
+    float(num)
+except ValueError:
+    print('Must type a number.')
+
+# Enter a number: hello
+# Must type a number.
+```
+
+---
+
+## `try/except/finally`
+
+* Like a normal `try...except...`
+* `finally` block runs whether `try` or `except` runs successfully
+* Use case: making sure files get closed even if there's an error reading them
+
+```python
+try:
+    num = input('Enter a number: ')
+    float(num)
+except ValueError:
+    print('Must type a number.')
+finally:
+    print('I print regardless.')
+
+# Enter a number: 10
+# I print regardless.
+```
